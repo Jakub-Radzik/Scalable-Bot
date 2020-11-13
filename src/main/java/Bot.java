@@ -9,7 +9,7 @@ import javax.security.auth.login.LoginException;
 import java.util.*;
 
 public class Bot extends ListenerAdapter {
-    private final String token = "Nzc2NzgxNzI3MzU5MDQxNTQ3.X654Ww.uQTjsH8Jq7du6fRnd_vPnn27Q6I";
+    private final String token = "";
     public JDA jda = JDABuilder.createDefault(token).build();
     private static Set<BotCommand> commands = new LinkedHashSet<>();
 
