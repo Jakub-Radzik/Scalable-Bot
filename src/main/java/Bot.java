@@ -9,7 +9,7 @@ import javax.security.auth.login.LoginException;
 import java.util.*;
 
 public class Bot extends ListenerAdapter {
-    private final String token = "################################";
+    private final String token = "";
     public JDA jda = JDABuilder.createDefault(token).build();
     private static Set<BotCommand> commands = new LinkedHashSet<>();
 
@@ -26,6 +26,8 @@ public class Bot extends ListenerAdapter {
         commands.add(new BotCommand("ziobro", new Ziobro(),"Try it please"));
         commands.add(new BotCommand("pwr", new Pwr(),"Some truths about PWr"));
         commands.add(new BotCommand("code", new CodeSnippet(),"Some code from me"));
+        commands.add(new BotCommand("me", new SenderInfo(),"Some info about you"));
+        commands.add(new BotCommand("dev", new DevPlatform(),"Not for Users"));
 
         HelpInformation.sendCommandsToCreateHelp(commands);
     }
@@ -44,7 +46,7 @@ public class Bot extends ListenerAdapter {
             public void run(){
                 jda.getPresence().setActivity(Activity.playing(messages[currentIndex]));
                 currentIndex=(currentIndex+1)%messages.length;
-            }},0,5000);
+            }},0,3000);
     }
 
     //End of section status------------------------------------------------------------------------
@@ -57,6 +59,7 @@ public class Bot extends ListenerAdapter {
             commandInvoked.invokeMethod(event);
         }
     }
+
 
     public BotCommand getBotCommandByEvent(String msg){
         for (BotCommand cmd : commands) {
