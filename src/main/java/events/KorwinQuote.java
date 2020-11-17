@@ -2,6 +2,7 @@ package events;
 
 import Interfaces.CommandResponse;
 import JKMTells.JKMArrayStructure;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,6 +16,6 @@ public class KorwinQuote implements CommandResponse {
             quote.append(lista.get(new Random().nextInt(lista.size())));
             quote.append(" ");
         }
-        event.getChannel().sendMessage(quote).queue();
+        event.getChannel().sendMessage(quote).tts(true).queue();
     }
 }
